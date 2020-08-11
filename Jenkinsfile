@@ -22,9 +22,9 @@ pipeline {
          }         
          stage('Upload to AWS') {
               steps {
-                  withAWS(region:'us-east-2',credentials:'aws-static') {
-                  sh 'echo "Uploading content with AWS creds"'
-                      s3Upload(pathStyleAccessEnabled: true, payloadSigningEnabled: true, file:'index.html', bucket:'batram-static-pipeline')
+                   withAWS(region: 'us-east-2', credentials: 'Jenkins') {
+                        sh 'echo "Uploading content with AWS creds"'
+                        s3Upload(pathStyleAccessEnabled: true, includePathPattern : '*.html', bucket: 'batram-static-pipeline')
                   }
               }
          }
