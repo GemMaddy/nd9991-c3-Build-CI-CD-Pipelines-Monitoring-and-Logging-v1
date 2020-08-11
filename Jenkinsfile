@@ -24,7 +24,7 @@ pipeline {
               steps {
                    withAWS(region: 'us-east-2', credentials: 'devopsroot') {
                         sh 'echo "Uploading content with AWS creds"'
-                        s3Upload(pathStyleAccessEnabled: true, excludePathPattern : '*Jenkins*', includePathPattern : 'css/*, img/*, vendor/**, __MACOSX/**', bucket: 'batram-static-pipeline')
+                        s3Upload(pathStyleAccessEnabled: true, excludePathPattern : '*Jenkins*', includePathPattern : '*.html, css/*, img/*, vendor/**, __MACOSX/**', bucket: 'batram-static-pipeline')
                   }
               }
          }
